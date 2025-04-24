@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translate</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <h1>Translate</h1>
+        </div>
+    </header>
+    <main class="container">
+        <section class="form-section">
+            <h2>Text Translation</h2>
+            <form method="POST">
+                <label for="text">Enter Text:</label>
+                <textarea id="text" name="text" placeholder="Type your text here..." required></textarea>
+                <label for="target_language">Target Language:</label>
+                <select id="target_language" name="target_language">
+                    <option value="en">English</option>
+                    <option value="fr">French</option>
+                    <option value="es">Spanish</option>
+                    <option value="de">German</option>
+                    <option value="zh-cn">Chinese</option>
+                </select>
+                <button class="btn" type="submit">Translate Text</button>
+            </form>
+        </section>
+        <section class="form-section">
+            <h2>Image Translation</h2>
+            <form method="POST" action="/translate-image" enctype="multipart/form-data">
+                <label for="image">Upload Image:</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+                <label for="target_language">Target Language:</label>
+                <select id="target_language" name="target_language">
+                    <option value="en">English</option>
+                    <option value="fr">French</option>
+                    <option value="es">Spanish</option>
+                    <option value="de">German</option>
+                    <option value="zh-cn">Chinese</option>
+                </select>
+                <button class="btn" type="submit">Translate Image</button>
+            </form>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2025 JetSetGo. All rights reserved.</p>
+    </footer>
+</body>
+</html>

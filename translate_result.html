@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation Result</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        .result-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .result-container h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        .highlight {
+            background-color: #f0f8ff;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .button {
+            display: block;
+            margin: 20px auto;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>Translation Result</h1>
+        {% if translated_text %}
+            <div class="highlight">
+                <p><strong>Translated Text:</strong></p>
+                <p>{{ translated_text }}</p>
+            </div>
+        {% elif extracted_text %}
+            <div class="highlight">
+                <p><strong>Extracted Text:</strong></p>
+                <p>{{ extracted_text }}</p>
+                <p><strong>Translated Text:</strong></p>
+                <p>{{ translated_text }}</p>
+            </div>
+        {% elif error %}
+            <div class="highlight">
+                <p style="color: red;"><strong>Error:</strong> {{ error }}</p>
+            </div>
+        {% endif %}
+        <button class="button" onclick="window.location.href='/translate'">Back</button>
+    </div>
+</body>
+</html>

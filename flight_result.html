@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Details</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        .flight-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .flight-container h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        .highlight {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .highlight h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .flight-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .flight-details div {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f0f8ff;
+        }
+        .flight-details div strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .button {
+            display: block;
+            margin: 20px auto;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="flight-container">
+        <h1>Flight Details</h1>
+        {% if flights %}
+            {% for flight in flights %}
+                <div class="highlight">
+                    <h2>{{ flight.date }}</h2>
+                    <div class="flight-details">
+                        <div>
+                            <strong>Flight Code:</strong> {{ flight.flight_code }}
+                            <strong>Flight Name:</strong> {{ flight.flight_name }}
+                        </div>
+                        <div>
+                            <strong>{{ flight.flight_type }}:</strong>
+                            Departure Time: {{ flight.departure_time }}
+                            <br>
+                            From: {{ flight.other_airport }}
+                            <br>
+                            Terminal: {{ flight.terminal }}
+                        </div>
+                        <div>
+                            <strong>Arrival Time:</strong>
+                            {{ flight.arrival_time }}
+                        </div>
+                    </div>
+                    <div class="flight-details">
+                        <div>
+                            <strong>Delays:</strong> {{ flight.delays }}
+                            <br>
+                            Updated Time: {{ flight.updated_time }}
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            {% endfor %}
+        {% elif error %}
+            <div class="highlight">
+                <p style="color: red;"><strong>Error:</strong> {{ error }}</p>
+            </div>
+        {% endif %}
+        <button class="button" onclick="window.location.href='/flight'">Back</button>
+    </div>
+</body>
+</html>
