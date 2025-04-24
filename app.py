@@ -1,12 +1,14 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, send_from_directory
 import requests
 import cv2
 import pytesseract
 from googletrans import Translator
 import numpy as np
 from datetime import datetime, timedelta
+import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='.')
+
 translator = Translator()
 
 # Set the path to the Tesseract executable
